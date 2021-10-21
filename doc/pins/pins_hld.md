@@ -4,36 +4,38 @@ _Rev v0.1.1_
 
 ## Table of Contents
 
-- [Revision](#revision)
-- [Scope](#scope)
-- [Definitions / Abbreviations](#definitions--abbreviations)
-- [Overview](#overview)
-  - [Open Source](#open-source)
-  - [Opt-In Path Towards SDN](#opt-in-path-towards-sdn)
-  - [Familiar Interface](#familiar-interface)
-  - [Unambiguous Documentation](#unambiguous-documentation)
-- [Requirements](#requirements)
-- [Architecture](#architecture)
-- [High-Level Design](#high-level-design)
-  - [P4RT Application](#p4rt-application)
-  - [P4 Programs & P4 Info](#p4-programs--p4-info)
-    - [P4 Compiler and the P4 Info](#p4-compiler-and-the-p4-info)
-  - [P4 APPL DB Tables](#p4-appl-db-tables)
-  - [P4 Orchagent](#p4-orchagent)
-  - [Application Level Responses](#application-level-responses)
-  - [Packet IO](#packet-io)
-    - [Receiving Packets (Packet Ins)](#receiving-packets-packet-ins)
-    - [Transmitting Packet (Packet Outs)](#transmitting-packet-packet-outs)
-- [Repositories](#repositories)
-- [SAI API](#sai-api)
-- [Configuration and management](#configuration-and-management)
-  - [CLI / YANG model Enhancements](#cli--yang-model-enhancements)
-  - [Config DB Enhancements](#config-db-enhancements)
-- [Warmboot and Fastboot Design Impact](#warmboot-and-fastboot-design-impact)
-- [Restrictions / Limitations](#restrictions--limitations)
-- [Testing Requirements / Design](#testing-requirements--design)
-- [Open / Action items - if any](#open--action-items---if-any)
-- [Supplementary Documents](#supplementary-documents)
+- [PINS HLD](#pins-hld)
+  - [Table of Contents](#table-of-contents)
+  - [Revision](#revision)
+  - [Scope](#scope)
+  - [Definitions / Abbreviations](#definitions--abbreviations)
+  - [Overview](#overview)
+    - [Open Source](#open-source)
+    - [Opt-In Path Towards SDN](#opt-in-path-towards-sdn)
+    - [Familiar Interface](#familiar-interface)
+    - [Unambiguous Documentation](#unambiguous-documentation)
+  - [Requirements](#requirements)
+  - [Architecture](#architecture)
+  - [High-Level Design](#high-level-design)
+    - [P4RT Application](#p4rt-application)
+    - [P4 Programs & P4 Info](#p4-programs--p4-info)
+      - [P4 Compiler and the P4 Info](#p4-compiler-and-the-p4-info)
+    - [P4 APPL DB Tables](#p4-appl-db-tables)
+    - [P4 Orchagent](#p4-orchagent)
+    - [Application Level Responses](#application-level-responses)
+    - [Packet IO](#packet-io)
+      - [Receiving Packets (Packet Ins)](#receiving-packets-packet-ins)
+      - [Transmitting Packet (Packet Outs)](#transmitting-packet-packet-outs)
+  - [Repositories](#repositories)
+  - [SAI API](#sai-api)
+  - [Configuration and management](#configuration-and-management)
+    - [CLI / YANG model Enhancements](#cli--yang-model-enhancements)
+    - [Config DB Enhancements](#config-db-enhancements)
+  - [Warmboot and Fastboot Design Impact](#warmboot-and-fastboot-design-impact)
+  - [Restrictions / Limitations](#restrictions--limitations)
+  - [Testing Requirements / Design](#testing-requirements--design)
+  - [Open / Action items - if any](#open--action-items---if-any)
+  - [Supplementary Documents](#supplementary-documents)
 
 <!--
   Initial markdown generated using Docs to Markdown plugin for Google Docs:
@@ -276,12 +278,12 @@ Here is the full list of supplementary HLD docs:
 <!-- Supplementary HLD Links -->
 <!-- FIXME(bocon): update links when ready -->
 [p4rt-hld]: p4rt_app_hld.md
-[saip4-hld]: in_progress.md
-[p4ext-hld]: in_progress.md
-[p4rt-db-hld]: in_progress.md
+[saip4-hld]: sai_p4.md
+[p4ext-hld]: p4ext_hld.md
+[p4rt-db-hld]: P4RT_App_DB_Schema.md
 [p4orch-hld]: p4orch_hld.md
-[appl-state-hld]: in_progress.md
-[packet-hld]: in_progress.md
+[appl-state-hld]: appl_state_db_response_path_hld.md
+[packet-hld]: Packet_io.md
 
 <!-- Repository Links -->
 [buildimage-repo]: https://github.com/Azure/sonic-buildimage
