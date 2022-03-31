@@ -195,45 +195,35 @@ std::thread StartReceive(
 A version of process_callback_function is implemented in genl-packet/receive_genenlink.cc and will be used if process_callback_function is NULL.  The purpose of process_callback_function is to extract the netlink attributes: source port, destination port and payload and pass them to the ReceiveCallbackFunction.  This can be implemented by the library user if the logic in the library is insufficient. 
 
 ## Library Phases 
-Current:
+- **Current:**
+  - The current kernel module, documented in PacketIO.md, remains unchanged and is supplied by the asic vendor or delegates.
+  - There is a single multicast group / queue that all producers and consumers can use.  All packets are sent to all consumers.  Filtering must be done post-consumption.
+  - Packet meta-data is fixed.
 
-The current kernel module, documented in PacketIO.md, remains unchanged and is supplied by the asic vendor or delegates.
+- **Dynamic generic netlink:**
+  - The kernel module will have an API that allows user space applications to manage multicast groups and queues at runtime.
+  - The library will allow applications to specify which multicast group / queue to listen to and allow for basic filtering.
+  - Packet meta-data continues to be fixed.
+- **Dynamic meta-data:**
+  - Kernel module is likely unchanged.
+  - Multicast group / queue functionality is likely unchanged.
+  - Packet meta-data can be specified by the using application.  
 
-There is a single multicast group / queue that all producers and consumers can use.  All packets are sent to all consumers.  Filtering must be done post-consumption.
-
-Packet meta-data is fixed.
-
-Dynamic generic netlink:
-
-The kernel module will have an API that allows user space applications to manage multicast groups and queues at runtime.
-
-The library will allow applications to specify which multicast group / queue to listen to and allow for basic filtering.
-
-Packet meta-data continues to be fixed.
-
-Dynamic meta-data:
-
-Kernel module is likely unchanged.
-
-Multicast group / queue functionality is likely unchanged.
-
-Packet meta-data can be specified by the using application.  
-
-##Sniffer Application:
+## Sniffer Application:
 The sniffer provides the means of a tcpdump-like tool to listen to the genetlink device. The sniffer/listener can be used for listening to traffic, as well as recording the traffic into a file or displaying to standard out. The resulting pcapng file can then be viewed using Wireshark. The sender can be used to send an example packet or packets from a pcap/pcapng file through genetlink. The sender also registers a new genetlink family and group called genl_packet and packets respectively. Both sniffer and sender use the pcapplusplus library which is an actively maintained open source library.
 
 Both the sender and the sniffer can be compiled via bazel or sonic-buildimage. Either way, once compiled or the necessary binary installed the following commands can be used to use the two applications ([sniffer] indicates the listener application and [sender] indicates the sender application):
-[sniffer] : launches the listener and records all packets into a file named out.pcapng
-[sniffer] -a : will either append the packets to out.pcapng or to a custom filename if given
-[sniffer] -filename=hello.pcapng : will write the packets into hello.pcapng
-[sniffer] -verbose : will print out verbose information about the packets received including metadata and packet contents.
-[sniffer] -=true : will simply print the payload into standard out.
+- [sniffer] : launches the listener and records all packets into a file named out.pcapng
+- [sniffer] -a : will either append the packets to out.pcapng or to a custom filename if given
+- [sniffer] -filename=hello.pcapng : will write the packets into hello.pcapng
+- [sniffer] -verbose : will print out verbose information about the packets received including metadata and packet contents.
+- [sniffer] -=true : will simply print the payload into standard out.
 
 The packet metadata carried with process_callback_function gets put into a comment. If the sniffer is to be run outside of P4Runtime the user might want to construct  their own custom receive thread using customCallbackReceive found in the header file for the sniffer, since the carried metadata might be different.
 
-sudo [sender] : will send a sample packet using genetlink.
-sudo [sender] -inputfile=hello.pcapng : will read the packets from a given file and send them via genetlink.
-sudo [sender] -packet=AABBCCDD : will send the given packet in hex representation via genetlink. 
+- sudo [sender] : will send a sample packet using genetlink.
+- sudo [sender] -inputfile=hello.pcapng : will read the packets from a given file and send them via genetlink.
+- sudo [sender] -packet=AABBCCDD : will send the given packet in hex representation via genetlink. 
 
 
 
