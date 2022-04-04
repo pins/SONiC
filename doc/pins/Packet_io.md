@@ -219,7 +219,7 @@ Both the sender and the sniffer can be compiled via bazel or sonic-buildimage. E
 - [sniffer] -verbose : will print out verbose information about the packets received including metadata and packet contents.
 - [sniffer] -=true : will simply print the payload into standard out.
 
-The packet metadata carried with process_callback_function gets put into a comment. If the sniffer is to be run outside of P4Runtime the user might want to construct  their own custom receive thread using customCallbackReceive found in the header file for the sniffer, since the carried metadata might be different.
+The packet metadata carried with process_callback_function gets put into a comment in the pcapng. If the sniffer is to be run outside of P4Runtime the user might want to construct their own custom receive thread using customCallbackReceive found in the header file for the sniffer, since the carried metadata might be different.
 
 - sudo [sender] : will send a sample packet using genetlink.
 - sudo [sender] -inputfile=hello.pcapng : will read the packets from a given file and send them via genetlink.
