@@ -210,7 +210,7 @@ A version of process_callback_function is implemented in genl-packet/receive_gen
   - Packet meta-data can be specified by the using application.  
 
 ## Sniffer Application:
-The sniffer provides the means of a tcpdump-like tool to listen to the genetlink device. The sniffer/listener can be used for listening to traffic, as well as recording the traffic into a file or displaying to standard out. The resulting pcapng file can then be viewed using Wireshark. The sender can be used to send an example packet or packets from a pcap/pcapng file through genetlink. The sender also registers a new genetlink family and group called genl_packet and packets respectively. Both sniffer and sender use the pcapplusplus library which is an actively maintained open source library.
+The sniffer provides the means of a tcpdump-like tool to listen to the genetlink device. The sniffer can be used for listening to traffic, as well as recording the traffic into a file or displaying to standard out. The resulting pcapng file can then be viewed using Wireshark. The sender can be used to send an example packet or packets from a pcap/pcapng file through genetlink. The sender also registers a new genetlink family and group called genl_packet and packets respectively. Both sniffer and sender use the pcapplusplus library which is an actively maintained open source library.
 
 Both the sender and the sniffer can be compiled via bazel or sonic-buildimage. Either way, once compiled or the necessary binary installed the following commands can be used to use the two applications ([sniffer] indicates the listener application and [sender] indicates the sender application):
 - [sniffer] : launches the listener and records all packets into a file named out.pcapng
