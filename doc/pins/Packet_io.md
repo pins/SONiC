@@ -214,11 +214,11 @@ The sniffer provides the means of a tcpdump-like tool to listen to the genetlink
 
 Both the sender and the sniffer can be compiled via bazel or sonic-buildimage. Either way, once compiled or the necessary binary installed the following commands can be used to use the two applications ([sniffer] indicates the sniffer application and [sender] indicates the sender application):
 ```
-- [sniffer] : launches the sniffer and records all packets into a file named out.pcapng
-- [sniffer] -a : will either append the packets to out.pcapng or to a custom filename if given
-- [sniffer] -filename=hello.pcapng : will write the packets into hello.pcapng
+- [sniffer] : launches the sniffer and records all packets into a file named out.pcapng.
+- [sniffer] -a : will either append the packets to out.pcapng or to a custom filename if given.
+- [sniffer] -o=- : This will print the hex representation of the received packets to standard out.
+- [sniffer] -o=hello.pcapng : By providing a filename you can write the genetlink packets into a given file. In this example it will be hello.pcapng.
 - [sniffer] -verbose : will print out verbose information about the packets received including metadata and packet contents.
-- [sniffer] -=true : will print the hex packet representation into standard out.
 ```
 
 The packet metadata carried with process_callback_function gets put into a comment in the pcapng. If the sniffer is to be run outside of P4Runtime the user might want to construct their own custom receive thread using customCallbackReceive found in the header file for the sniffer, since the carried metadata might be different.
