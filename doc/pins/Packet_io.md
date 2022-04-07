@@ -22,7 +22,7 @@ v0.2 | 03/31/2022 | Google, ONF | Extract Library
 
 ## Scope
 
-This document covers the high level design aspects of Packet I/O in SONiC for both the P4Runtime application and any subsequent application that would benifit from packet exchange using Generic Netlink Sockets. 
+This document covers the high level design aspects of Packet I/O in SONiC for both the P4Runtime application and any subsequent application that would benefit from packet exchange using Generic Netlink Sockets. 
 
 
 ## Overview
