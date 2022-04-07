@@ -186,7 +186,7 @@ using ReceiveCallbackFunction = std::function<void(
     const std::string& src_port_name, const std::string& target_port_name,
     const std::string& payload)>;
 ```
-Then the StartReceive function is then called which returns a thread which calls the callback function on packet receipt. 
+Then the StartReceive function is called which returns a thread which calls the callback function on packet receipt. 
 ```
 std::thread StartReceive(
     packet_metadata::ReceiveCallbackFunction callback_function,
