@@ -16,6 +16,7 @@ _Rev v0.1_
   * [Response path](#response-path)
 - [APPL DB Schema High-Level Design](#appl-db-schema-high-level-design)
 - [Testing Requirements/Design](#testing-requirements-design)
+- [Configuring P4RT Application](#configuring-p4rt-application)
 - [Open/Action items - if any](#open-action-items---if-any)
 
 ## Revision
