@@ -164,6 +164,30 @@ P4RT application introduces new tables that are written to APPL_DB for the table
 
 The P4RT application code will have unit & component tests that together will give >80% code coverage.
 
+## Configuring P4RT Application
+
+The P4RT application is configured at the start up by reading the P4RT and certs flags from CONFIG_DB. If no valid config exists in CONFIG_DB, it uses the default values. The configs can be added to the CONFIG_DB either manually (by adding to config_db.json) or through gNMI, as it can be different for users.
+
+The example below shows how configs can be added in config_db.json
+
+```
+"P4RT": {
+  "certs": {
+    "server_crt": "/keys/server_cert.lnk",
+    "server_key": "/keys/server_key.lnk",
+    "ca_crt": "/keys/ca_cert.lnk",
+    "cert_crl_dir": "/keys/crl"
+  },
+  "p4rt_app": {
+    "port": "9559",
+    "use_genetlink": "false",
+    "use_port_ids": "false",
+    "save_forwarding_config_file" : "/etc/sonic/p4rt_forwarding_config.pb.txt",
+    "p4rt_unix_socket" : "/etc/sonic/p4rt/sock/p4rt.sock",
+    "authz_policy": "/keys/authorization_policy.json"
+  }
+}
+```
 
 ## Open/Action items - if any
 
