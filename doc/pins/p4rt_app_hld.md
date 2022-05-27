@@ -167,9 +167,9 @@ The P4RT application code will have unit & component tests that together will gi
 
 ## Configuring P4RT Application
 
-The P4RT application is configured at the start up by reading the P4RT and certs flags from CONFIG_DB. If no valid config exists in CONFIG_DB, it uses the default values. The configs can be added to the CONFIG_DB either manually (by adding to config_db.json) or through gNMI, as it can be different for users.
+The P4RT application is configured at the start-up by reading the P4RT configuration from the CONFIG_DB. If no valid config exists in CONFIG_DB, it uses the default values. The configuration can be added to the CONFIG_DB either manually (by adding to config_db.json) or through gNMI, as it can be different for users.
 
-The example below shows how configs can be added in config_db.json
+Below is an example of adding P4RT configuration to config_db.json. It initializes the P4RT application with the default configuration (which can be omitted). The user can modify this block based on their environment settings. 
 
 ```
 "P4RT": {
@@ -184,7 +184,7 @@ The example below shows how configs can be added in config_db.json
     "use_genetlink": "false",
     "use_port_ids": "false",
     "save_forwarding_config_file" : "/etc/sonic/p4rt_forwarding_config.pb.txt",
-    "p4rt_unix_socket" : "/etc/sonic/p4rt/sock/p4rt.sock",
+    "p4rt_unix_socket" : "/sock/p4rt.sock",
     "authz_policy": "/keys/authorization_policy.json"
   }
 }
