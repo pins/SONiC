@@ -167,7 +167,7 @@ The P4RT application code will have unit & component tests that together will gi
 
 ## Configuring P4RT Application
 
-The P4RT application is configured at the start-up by reading the P4RT configuration from the CONFIG_DB. If no valid config exists in CONFIG_DB, it uses the default values. The configuration can be added to the CONFIG_DB either manually (by adding to config_db.json) or through gNMI, as it can be different for users.
+The P4RT application is configured at the start-up by reading the P4RT configuration from the CONFIG_DB. If no valid config exists in CONFIG_DB, it uses the default values. The configuration can be added to the CONFIG_DB by being manually added to the config_db.json file. The P4RT container will need to be restarted if the configuration is changed.
 
 Below is an example of adding P4RT configuration to config_db.json. It initializes the P4RT application with the default configuration (which can be omitted). The user can modify this block based on their environment settings. 
 
